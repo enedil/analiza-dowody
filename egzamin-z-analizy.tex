@@ -1,0 +1,228 @@
+\documentclass[11pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\selectlanguage{polish}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{mathtools}
+
+\usetheme{CambridgeUS}
+
+\newcommand{\below}[1]{\displaystyle\mathop{#1}}
+
+\begin{document}
+	\author{Michał Radwański}
+	\title{Egzamin z Analizy Matematycznej I}
+	\subtitle{część teoretyczna - dowody}
+	%\logo{}
+	\institute{MiNI PW}
+	\date{\today}
+	%\subject{}
+	\setbeamercovered{transparent}
+	\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+\begin{frame}
+\frametitle{Ciąg zbieżny ma tylko jedną granicę}
+Niech $\left\{a_n\right\}_{n = 1}^{\infty}$ będzie ciągiem zbieżnym. Załóżmy, że ma dwie różne granice, $g$ i $g^\prime$. Z definicji granicy ciągu, 
+\[
+	\below{\forall}_{\varepsilon > 0} \below{\exists}_{M} \below{\forall}_{n > M} |a_n - g| < \varepsilon
+\]
+Obierzmy $\varepsilon = |g - g^\prime|/4 > 0$. Niech $M = max\{M_g, M_{g^\prime}\}$ (odpowiednie liczby $M$, dla $\varepsilon$ i obu granic). Wówczas, dla każdego $n > M$
+\[
+	|a_n - g| < \varepsilon  \land |a_n - g^\prime| < \varepsilon \Rightarrow
+\]
+\[
+	2\varepsilon > |a_n - g| + |a_n - g'| = |a_n - g| + |g^\prime - a_n| 
+\]
+\[
+	\geq |a_n - g + g^\prime - a_n| = |g - g^\prime| = 4\varepsilon
+\]
+Uzyskana sprzeczność dowodzi, że założenie było błędne, t.j. $g = g^\prime$.
+\end{frame}
+\begin{frame}
+\frametitle{Ciąg zbieżny jest ograniczony}
+Niech $\left\{a_n\right\}_{n = 1}^{\infty}$ będzie ciągiem zbieżnym do $g$. Z definicji,
+\[
+	\below{\forall}_{\varepsilon > 0} \below{\exists}_{M} \below{\forall}_{n > M} |a_n - g| < \varepsilon
+\]
+Obierzmy $\varepsilon > 0$ i odpowiadające mu $M_\varepsilon$. Zbiór $\left\{a_n : 0 < n \leq M_\varepsilon \right\}$ jest skończony, a zatem ograniczony.
+Niech $n > M_\varepsilon$. Wówczas 
+\[
+	|a_n - g| < \varepsilon \Leftrightarrow -\varepsilon < a_n - g < \varepsilon \Leftrightarrow g - \varepsilon < a_n < g + \varepsilon
+\]
+Wobec tego, ciąg $\left\{a_n\right\}_{n = M+1}^{\infty}$ jest ograniczony z dołu przez $g - \varepsilon$, a z góry przez $g + \varepsilon$. Zbiór $\left\{a_n : n \in \mathbb{N}\right\}$, jako suma mnogościowa zbiorów ograniczonych, jest ograniczony (z góry przez maksimum z kresów górnych, z dołu przez minimum kresów dolnych).
+\end{frame}
+\begin{frame}
+\frametitle{Ciąg niemalejący i ograniczony z góry jest zbieżny}
+Niech $\left\{a_n\right\}_{n = 1}^{\infty}$ będzie ciągiem niemalejącym i ograniczonym z góry. Wobec tego $\varsigma = \sup_{n \in \mathbb N} a_n$ istnieje, i jest liczbą rzeczywistą. Pokażemy, że $\lim_{n \rightarrow \infty} a_n = \varsigma$.
+Z definicji kresu górnego (warunek 2 o najmniejszym ograniczeniu górnym),
+\[
+	\below{\forall}_{\delta > 0} \below{\exists}_n \below{\forall}_{m > n} \varsigma < a_m + \delta
+\]
+Ponadto, z warunku 1 kresu górnego, $\below{\forall}_{n}a_n \leq \varsigma \Rightarrow \varsigma - a_n = |\varsigma - a_n |$.
+Wobec tego,
+\[
+	\below{\forall}_{\delta > 0} \below{\exists}_n \below{\forall}_{m > n} |\varsigma - a_m | < \delta
+\]
+Zatem, z definicji granicy ciągu, $\varsigma = \displaystyle\mathop{\lim}_{n \rightarrow \infty}a_n$
+\end{frame}
+\begin{frame}
+\frametitle{$\lim_{n \rightarrow \infty}\sqrt[n]n = 1$}
+Rozważmy funkcję $f: \mathbb{R_+} \rightarrow \mathbb{R}$, $f(x) \coloneqq x^{1/x} = \exp (1/x \cdot \ln x)$. $f$, jako złożenie funkcji ciągłych, jest funkcją ciągłą. Niech $a_n = n$ będzie ciągiem liczb naturalnych. Z definicji ciągłości wg. Heinego, jeżeli $\lim_{n \rightarrow \infty} a_n = \infty$, to 
+\[
+	\lim_{n \rightarrow \infty}f(a_n) = \lim_{x \rightarrow \infty}f(x) = \lim_{x\rightarrow \infty} \exp (1/x \cdot \ln x) \stackrel{\text{ciągłość}}{=} 
+\]
+\[
+	= \exp \left(\lim_{x\rightarrow \infty}\frac{\ln x}x \right) = \exp\left(\left[\frac \infty \infty \right]\right) \stackrel{\mathcal{H}}{=} \exp \left( \lim_{x\rightarrow \infty}\frac{1/x}{1} \right) = \exp(0) = 1
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{tw. Weierstraßa -- sformułowanie}
+Niech $\mathcal{I} \subset \mathbb{R}$ będzie przedziałem domkniętym. Jeśli $f:\mathcal{I} \rightarrow \mathbb{R}$ jest ciągła, to
+\begin{enumerate}
+\item $f$ jest ograniczona
+\item istnieją punkty $x_0$, $x_0^\prime$ $\in \mathcal{I}$ t.ż.$$ f(x_0) = \below{\sup}_{x\in \mathcal{I}} f(x) \qquad \text{oraz}\qquad f(x_0^\prime) = \below{\inf}_{x\in\mathcal{I}}f(x)$$
+\end{enumerate}
+
+Jako, że dowody przebiegają analogicznie w obu przypadkach, pokażemy iż
+\begin{enumerate}
+\item $f$ jest ograniczona z góry
+\item istnieje punkt $x_0$ $\in \mathcal{I}$ t.ż.$$ f(x_0) = \displaystyle\mathop{\sup}_{x\in \mathcal{I}} f(x)$$
+\end{enumerate}
+
+\end{frame}
+\begin{frame}
+\frametitle{tw. Weierstraßa cd. -- dowód (1)}
+Załóżmy przez sprzeczność, że $f$ nie jest ograniczona z góry.  Wobec tego, istnieje ciąg $\{a_n\}_{n=1}^\infty$, taki, że $\lim_{n \rightarrow \infty} f(a_n) = \infty$. Ciąg ten jest ograniczony, więc z tw. Bolzana-Weierstraßa, osiada podciąg zbieżny, $\{b_n\}^{\infty}_{n=1}$.
+Jako, że $\{b_n\}_{n=1}^\infty$ jest podciągiem $\{a_n\}_{n=1}^\infty$, to $\lim_{n \rightarrow \infty}f(b_n) = \infty$. Niech $\mathfrak{L} = \lim_{n \rightarrow \infty}b_n$. Wówczas, z ciągłości
+\[
+	\infty = \below{\lim}_{n \rightarrow \infty}f(b_n) = f(\below{\lim}_{n\rightarrow \infty}b_n) =  f(\mathfrak{L}) \in f(\mathcal{I}) \subseteq \mathbb{R}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{tw. Weierstraßa cd. -- dowód (2)}
+Z poprzedniego dowodu wynika, iż $f$ jest ograniczona, zatem $\varsigma = \sup_{x\in \mathcal{I}} f(x) \in \mathbb{R}$. Pokażemy, iż $\exists_{x\in \mathcal{I}}f(x) = \varsigma$. Załóżmy, że dla każdego ciągu $\{a_n\}_{n=1}^{\infty}$ elementów z $\mathcal{I}$, $\lim_{n \rightarrow \infty}f(a_n)$ bądź to nie istnieje, bądź jest mniejsza niż $\varsigma$. Wobec tego sprzeczność, bo nie jest prawdą, że
+\[
+	\below{\forall}_{\delta > 0}\below{\exists}_{x\in \mathcal{I}} \varsigma -f(x) < \delta
+\]
+Weźmy zatem ograniczony ciąg $\{a_n\}_{n=1}^{\infty}$, taki że $\lim_{n \rightarrow \infty}f(a_n) = \varsigma$. Wówczas, z tw. Bolzana-Weierstraßa, $\{a_n\}_{n=1}^{\infty}$, posiada podciąg zbieżny, $\{b_n\}_{n=1}^{\infty}$. Z ciągłości funkcji $f$ mamy, iż
+\[
+\varsigma = \below{\lim}_{n \rightarrow \infty}f(a_n) = \below{\lim}_{n\rightarrow \infty}f(b_n) = f(\below{\lim}_{n \rightarrow \infty}b_n) \in f(\mathcal{I})
+\]
+\end{frame}
+\begin{frame}
+\frametitle{Warunek konieczny różniczkowalności}
+Mówimy, że $f:\mathcal{S} \rightarrow \mathbb{R}$ jest różniczkowalna w $a \in \mathcal{S}$, jeśli istnieje
+\[
+f^\prime(a) = \below{\lim}_{h \rightarrow 0} \frac{f(a + h) - f(a)}h \in \mathbb{R}
+\]
+Jeśli $f$ jest różniczkowalna w $a$, to jest także w tym punkcie ciągła, albowiem
+\[
+0 = \left( \below{\lim}_{h \rightarrow 0} h\right) \cdot \left(\below{\lim}_{h \rightarrow 0} \frac{f(a + h) - f(a)}h \right) =
+\]
+\[
+= \below{\lim}_{h \rightarrow 0} \left( f(a + h) - f(a) \right) = \left(\below{\lim}_{h \rightarrow 0} f(a+h) \right) - f(a)
+\]
+Wobec tego, $f(a) = \lim_{x \rightarrow a}f(x)$, czyli $f$ jest ciągła w $a$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Wzór na pochodną iloczynu funkcji}
+Niech $f$, $g$ będą funkcjami różniczkowalnymi w $a \in \mathbb{R}$. Wówczas
+\[
+	(f \cdot g)^\prime(a) = \below{\lim}_{x \rightarrow a}\frac{f(x)g(x) - f(a)g(a)}{x - a} = 
+\]
+\[
+	= \below{\lim}_{x \rightarrow a}\frac{f(x)g(x)-f(x)g(a)+f(x)g(a)-f(a)g(a)}{x-a} = 
+\]
+\[
+= \below{\lim}_{x \rightarrow a}\frac{f(x)\left(g(x)-g(a)\right)+g(a)\left(f(x)-f(a)\right)}{x-a} = 
+\]
+\[
+=  \below{\lim}_{x \rightarrow a} \left(f(x)\frac{g(x)-g(a)}{x-a}\right) +  \below{\lim}_{x \rightarrow a} \left( g(a) \frac{f(x)-f(a)}{x-a}\right) = 
+\]
+\[
+= f(a)g^\prime(a) + f^\prime(a)g(a)
+\]
+\end{frame}
+\begin{frame}
+\frametitle{Warunek konieczny istnienia ekstremum lokalnego}
+Niech $\mathcal{I}$ będzie przedziałem otwartym. Jeśli $f : \mathcal{I} \rightarrow \mathbb{R}$ oraz $f$ jest różniczkowalna w punkcie $a \in \mathcal{I}$ i ma w punkcie $a$ ekstremum lokalne, to $f^\prime(a) = 0$.
+\newline
+{\bf dowód:} Załóżmy, że $f(a)$ stanowi maksimum lokalne - dowód dla minimum jest analogiczny. Jako, że $f$ ma pochodną w $a$, zatem
+\[
+f^\prime(a) = \below{\lim}_{x\rightarrow a^+} \frac{f(x)-f(a)}{x-a} \geq 0
+\]
+\[
+f^\prime(a) = \below{\lim}_{x\rightarrow a^-} \frac{f(x)-f(a)}{x-a} \leq 0
+\]
+Wobec tego, $f^\prime(a) = 0$.
+\end{frame}
+\begin{frame}
+\frametitle{Tw. Rolle'a i tw. Lagrange'a -- sformułowanie}
+{\bf tw. Rolle'a:}
+Niech $f$ będzie funkcją ciągłą na przedziale $[a, b]$, a różniczkowalną na $(a, b)$. Wówczas,
+\[
+f(a) = f(b) \Rightarrow \below{\exists}_{c \in (a, b)} f^\prime(c) = 0
+\]
+
+{\bf tw. Lagrange'a:}
+Niech $f$ będzie funkcją ciągłą na przedziale $[a, b]$, a różniczkowalną na $(a, b)$. Wówczas,
+\[
+\below{\exists}_{c \in (a, b)} f^\prime(c) = \frac{f(b) - f(a)}{b - a}
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Tw. Rolle'a i tw. Lagrange'a -- dowód}
+{\bf tw. Rolle'a}: Jeśli $f$ jest funkcją stałą, to dla każdego $c \in (a, b)$, $f^\prime(c) = 0$. Załóżmy zatem, że dla pewnego $x \in (a, b)$, $f(x) > f(a) = f(b)$ (jeśli $f(x) < f(a)$ dowód przebiega analogicznie). Jako, że $f$ jest funkcją ciągłą na przedziale domkniętym, to na mocy tw. Weierstraßa osiąga swoje maksimum w punkcie $c$ różnym od $a$, $b$. Jako, że warunkiem koniecznym istnienia maksimum jest zerowa pochodna, to istotnie, $f^\prime(c) = 0$.
+\newline
+{\bf tw. Lagrange'a:} Niech $g(x) = f(x) - \frac{f(b)-f(a)}{b-a} \cdot(x - a)$. Wówczas \[g(a) = f(a)\], \[g(b) = f(b) - f(b) + f(a) = f(a)\], a zatem, z tw. Rolle'a, istnieje takie $c \in (a, b)$, że \[0 = g^\prime(c) = f^\prime(c) - \frac{f(b)-f(a)}{b-a} \Rightarrow f^\prime(c) = \frac{f(b)-f(a)}{b-a}\]
+\end{frame}
+\begin{frame}
+\frametitle{Związek monotoniczności funkcji ze znakiem pierwszej pochodnej}
+Niech $f : [a, b] \rightarrow \mathbb R$ będzie funkcją ciągłą na przedziale $[a, b]$ i różniczkowalną
+w $(a, b)$. Wówczas
+\begin{itemize}
+\item $f$ jest niemalejąca na $[a, b]$ \quad $\Leftrightarrow$ \quad $\below{\forall}_{x \in (a, b)} f^\prime (x) \geq 0$,
+\item $f$ jest nierosnąca na $[a, b]$ \, \quad $\Leftrightarrow$ \quad $\below{\forall}_{x \in (a, b)} f^\prime (x) \leq 0$.
+\end{itemize}
+Dowód jest prostym wnioskiem z tw. Lagrange'a.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Warunek wystarczający istnienia ekstremum lokalnego II}
+Załóżmy, że funkcja $f : (a, b)\rightarrow \mathbb{R}$ jest różniczkowalna w przedziale $(a, b)$ oraz, że istnieje $f^{\prime\prime}(x_0)$ gdzie $x_0 \in (a, b)$. Jeśli
+\begin{itemize}
+\item $f^\prime(x_0) = 0$ i $f^{\prime\prime}(x_0 ) > 0$ to $f$ ma w $x_0$ minimum lokalne właściwe
+\item $f^\prime(x_0) = 0$ i $f^{\prime\prime}(x_0 ) < 0$ to $f$ ma w $x_0$ maksimum lokalne właściwe
+\end{itemize}
+Zapiszmy $f$ za pomocą wzoru Taylora z resztą w postaci Peano..
+\[
+f(x) = f(x_0) + f^\prime(x_0) \cdot(x - x_0) + f^{\prime\prime}(x_0)/2 \cdot(x-x_0)^2 + \mathcal{R}_2(x)
+\]
+\[
+\mathfrak{L} = f(x) - f(x_0) = 0 \cdot (x-x_0) + f^{\prime\prime}(x_0)/2 \cdot(x-x_0)^2 + \mathcal{R}_2(x)
+\]
+Jako, że $\below{\lim}_{x\rightarrow x_0} \mathcal{R}_2(x)/(x-x_0)^2 = 0$, to istnieje taka $\delta > 0$, że jeśli $|x - x_0 | < \delta$, to $|\mathcal R_2(x) | < \varepsilon (x - x_0)^2$. Wobec tego, dla $\varepsilon = f^{\prime\prime}(x_0)/2$
+\[
+\mathfrak{L} = f^{\prime\prime}(x_0)/2 \cdot(x-x_0)^2 + \mathcal{R}_2(x) > (x - x_0)^2\left( f^{\prime\prime}(x_0)/2  - f^{\prime\prime}(x_0)/2\right) = 0
+\]
+Zatem, zgodnie z definicją, $x_0$ jest minimum lokalnym. Dowód drugiego punktu przebiega analogicznie.
+\end{frame}
+
+\end{document}
