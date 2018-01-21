@@ -21,7 +21,7 @@
 	\title{Egzamin z Analizy Matematycznej I}
 	\subtitle{część teoretyczna - dowody}
 	%\logo{}
-	\institute{MiNI PW}
+	%\institute{}
 	\date{\today}
 	%\subject{}
 	\setbeamercovered{transparent}
@@ -190,7 +190,7 @@ Niech $f$ będzie funkcją ciągłą na przedziale $[a, b]$, a różniczkowalną
 \frametitle{Tw. Rolle'a i tw. Lagrange'a -- dowód}
 {\bf tw. Rolle'a}: Jeśli $f$ jest funkcją stałą, to dla każdego $c \in (a, b)$, $f^\prime(c) = 0$. Załóżmy zatem, że dla pewnego $x \in (a, b)$, $f(x) > f(a) = f(b)$ (jeśli $f(x) < f(a)$ dowód przebiega analogicznie). Jako, że $f$ jest funkcją ciągłą na przedziale domkniętym, to na mocy tw. Weierstraßa osiąga swoje maksimum w punkcie $c$ różnym od $a$, $b$. Jako, że warunkiem koniecznym istnienia maksimum jest zerowa pochodna, to istotnie, $f^\prime(c) = 0$.
 \newline
-{\bf tw. Lagrange'a:} Niech $g(x) = f(x) - \frac{f(b)-f(a)}{b-a} \cdot(x - a)$. Wówczas \[g(a) = f(a)\], \[g(b) = f(b) - f(b) + f(a) = f(a)\], a zatem, z tw. Rolle'a, istnieje takie $c \in (a, b)$, że \[0 = g^\prime(c) = f^\prime(c) - \frac{f(b)-f(a)}{b-a} \Rightarrow f^\prime(c) = \frac{f(b)-f(a)}{b-a}\]
+{\bf tw. Lagrange'a:} Niech $g(x) = f(x) - \frac{f(b)-f(a)}{b-a} \cdot(x - a)$. Wówczas \[g(a) = f(a)\] \[g(b) = f(b) - f(b) + f(a) = f(a)\], a zatem, z tw. Rolle'a, istnieje takie $c \in (a, b)$, że \[0 = g^\prime(c) = f^\prime(c) - \frac{f(b)-f(a)}{b-a} \Rightarrow f^\prime(c) = \frac{f(b)-f(a)}{b-a}\]
 \end{frame}
 \begin{frame}
 \frametitle{Związek monotoniczności funkcji ze znakiem pierwszej pochodnej}
